@@ -19,7 +19,7 @@ def send_email(label_rec, confid, face, flag)
         body = '{} is correctly recognized with confidence {}.'.format(label_rec, confid)
         msgText = MIMEText('<b>%s</b><br><img src="cid:%s"><br>' % (body, attachment), 'html')
         msg.attach(msgText)
-    else if flag == 2:
+    elif flag == 2:
         body = 'confidence:', confid, 'label:', label_rec
         msgText = MIMEText('<b>%s</b><br><img src="cid:%s"><br>' % (body, attachment), 'html')
         msg.attach(msgText)
