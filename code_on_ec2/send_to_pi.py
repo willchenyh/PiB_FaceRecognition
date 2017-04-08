@@ -42,8 +42,8 @@ def classify(image_path):
 
 
 def classify_test(image_path):
-    result_file = open('/host/Documents/code_on_ec2/new_result/result.txt', 'w')
-    result_file.write('Will,0.96')
+    gesult_file = open('/host/Documents/code_on_ec2/new_result/result.txt', 'w')
+    result_file.write('Will,0.75')
     result_file.close()
     return
 
