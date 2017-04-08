@@ -33,7 +33,7 @@ def main():
     rawCapture = PiRGBArray(camera, size=(width, height))
     # warm up and set up
     print 'Let me get ready ... 3 seconds ...'
-    time.sleep(3)
+    time.sleep(2)
     print 'Starting ...'
 
     # 2. detect a face, display it, and get confirmation from user.
@@ -45,26 +45,45 @@ def main():
         for (x, y, w, h) in faces:
             if w < 120:
                 continue
+            print 'Face detected'
             # cv2.rectangle(frame, (x,y), (x+w,y+h), (0,255,0), 2)
             face = img[y:y + h + 1, x:x + w + 1]
             face_path = os.path.join(NEW_FACE_PATH, NEW_FACE_NAME)
             cv2.imwrite(face_path, face)
             #image_path = os.path.join(NEW_IMAGE_PATH, NEW_IMAGE_NAME)
-            #cv2.imwrite(image_path, img)
-            break
-        cv2.imshow('Face Image for Classification', frame)
-        answer = input('Confirm image? (y/n)')
-        if answer == 'y':
-            # TODO 3. send it for classification and fetch result.
-            # TODO read result
-            # display on face image
-            result_to_display = 'blabla'
-            cv2.putText(frame, result_to_display, (0,0), FONT, 1, (0, 255, 0), 2)
+            #cv2.imwrite(image_path, gimg)
+            
             cv2.imshow('Face Image for Classification', frame)
-            # TODO move result file to old dir
-            break
-        else:
-            rawCapture.truncate(0)
+            cv2.waitKey(2000)
+            cv2.destroyAllWindows()
+            cv2.waitKey(1)
+            cv2.waitKey(1)
+            cv2.waitKey(1)
+            cv2.waitKey(1)
+            answer = input('Confirm image (1-yes / 0-no): ')
+            
+            if answer == 1:
+                # TODO 3. send it for classification and fetch result.
+                # TODO read result
+                # display on face image
+                conf = 0.8
+                if conf > 0.7:
+                    result_to_display = 'Hey Will!'
+                else:
+                    result_to_display = 'Sorry I do not recognize you.'
+                cv2.putText(frame, result_to_display, (10,30), FONT, 1, (0, 255, 0), 2)
+                cv2.imshow('Face Image for Classification', frame)
+                cv2.waitKey(0)
+                cv2.destroyAllWindows()
+                cv2.waitKey(1)
+                cv2.waitKey(1)
+                cv2.waitKey(1)
+                cv2.waitKey(1)
+                # TODO move result file to old dir    
+                break
+        rawCapture.truncate(0)
+        print 'Waiting ...'
+        time.sleep(1)
     return
 
 
