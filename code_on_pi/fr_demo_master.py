@@ -84,10 +84,10 @@ def main():
                 print name, conf
                 # display on face image
                 #conf = 0.8
-                if name == 'will' and int(conf) > 0.7:
+                if name == 'will' and float(conf) > 0.6:
                     result_to_display = 'Hey Will!'
                 else:
-                    result_to_display = 'Sorry I don\'t recognize you.'
+                    result_to_display = 'Sorry I don\'t know you.'
                 cv2.putText(frame, result_to_display, (10,30), FONT, 1, (0, 255, 0), 2)
                 cv2.imshow('Face Image for Classification', frame)
                 cv2.waitKey(0)

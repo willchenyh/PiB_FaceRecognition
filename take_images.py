@@ -33,7 +33,7 @@ if __name__ == '__main__':
             if w<120:
                 continue
             #cv2.rectangle(frame, (x,y), (x+w,y+h), (0,255,0), 2)
-            face = img[y:y+h+1,x:x+w+1]
+            face = img[y-5:y+h+6,x-5:x+w+6]
             counter += 1
             img_name = 'willfaces/16_test'+str(counter)+'.jpg'
             cv2.imwrite(img_name, face)
