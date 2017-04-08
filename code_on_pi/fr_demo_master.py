@@ -84,7 +84,7 @@ def main():
                 print name, conf
                 # display on face image
                 #conf = 0.8
-                if name == 'will' and conf > 0.7:
+                if name == 'will' and int(conf) > 0.7:
                     result_to_display = 'Hey Will!'
                 else:
                     result_to_display = 'Sorry I don\'t recognize you.'
