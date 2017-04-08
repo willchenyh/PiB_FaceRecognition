@@ -37,7 +37,14 @@ def move_file(file_path, new_path):
 
 
 def classify(image_path):
-    subprocess.call('./demos/classifier_test.py infer ./generated-embeddings/classifier.pkl '+image_path, shell=True)
+    #subprocess.call('./demos/classifier_test.py infer ./generated-embeddings/classifier.pkl '+image_path, shell=True)
+    return
+
+
+def classify_test(image_path):
+    result_file = open('/host/Documents/code_on_ec2/new_result/result.txt', 'w')
+    result_file.write('Will,0.96')
+    result_file.close()
     return
 
 
@@ -50,18 +57,31 @@ def main():
         # classify image
         print 'Let\'s see who you are...'
         # TODO: call the classify script and save name and confidence level in a txt file
-        classify(new_image_path)
+        #classify(new_image_path)
+        classify_test(new_image_path)
+        print 'Now I know!'
         # clean up old
         move_file(new_image_path, OLD_IMAGES_DIR)
         # wait 10 seconds and move the result file to old file dir
         time.sleep(10)
         result_file_path = os.path.join(RESULT_DIR, RESULT_FILE_NAME)
         move_file(result_file_path, OLD_RESULTS_DIR)
+        print 'Moved files to old dir'
+    else:
+        print 'Waiting for image...'
+    return
+
+
+def loop():
+    print 'Starting ...'
+    while True:
+        main()
+        time.sleep(1)
     return
 
 
 if __name__ == "__main__":
-    main()
+    loop()
 
 
 
