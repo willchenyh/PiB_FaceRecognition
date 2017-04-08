@@ -88,7 +88,9 @@ def main():
                 new_result_present = True
                 new_result_path = extract_result_file(new_result_list)
                 present_result(new_result_path)
+                """
                 move_file(new_result_path, OLD_RESULTS_DIR)
+                """
             else:
                 print 'Still thinking...'
     else:
@@ -105,7 +107,7 @@ def loop():
 
 
 if __name__ == "__main__":
-    loop()
+    main()
 
 
 

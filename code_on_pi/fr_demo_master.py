@@ -17,7 +17,17 @@ NEW_FACE_PATH = '/home/pi/Documents/myProjects/PIB/face_recognition/code_on_pi/n
 NEW_FACE_NAME = 'new_face.jpg'
 NEW_IMAGE_PATH = '/home/pi/Documents/myProjects/PIB/face_recognition/code_on_pi/new_image'
 NEW_IMAGE_NAME = 'new_image.jpg'
+NEW_RESULT_PATH = '/home/pi/Documents/myProjects/PIB/face_recognition/code_on_pi/new_result/result.txt'  # local
+OLD_RESULTS_DIR = '/home/pi/Documents/myProjects/PIB/face_recognition/code_on_pi/old_results'  # local
+SEND_FILE_COMMAND = 'python /home/pi/Documents/myProjects/PIB/face_recognition/code_on_pi/send_to_ec2.py'
 FONT = cv2.FONT_HERSHEY_SIMPLEX
+
+
+def move_file(in_file_path, out_file_path):
+    move_command = ' '.join(['mv', in_file_path, out_file_path])
+    print move_command
+    os.system(move_command)
+    return
 
 
 def main():
@@ -49,7 +59,7 @@ def main():
             # cv2.rectangle(frame, (x,y), (x+w,y+h), (0,255,0), 2)
             face = img[y:y + h + 1, x:x + w + 1]
             face_path = os.path.join(NEW_FACE_PATH, NEW_FACE_NAME)
-            cv2.imwrite(face_path, face)
+            cv2.imwrite(face_path, img)
             #image_path = os.path.join(NEW_IMAGE_PATH, NEW_IMAGE_NAME)
             #cv2.imwrite(image_path, gimg)
             
@@ -64,13 +74,20 @@ def main():
             
             if answer == 1:
                 # TODO 3. send it for classification and fetch result.
+                os.system(SEND_FILE_COMMAND)
                 # TODO read result
+                result_file = open(NEW_RESULT_PATH, 'r')
+                result = result_file.read()
+                details = result.split(',')
+                name = details[0]
+                conf = details[1]
+                print name, conf
                 # display on face image
-                conf = 0.8
-                if conf > 0.7:
+                #conf = 0.8
+                if name == 'will' and conf > 0.7:
                     result_to_display = 'Hey Will!'
                 else:
-                    result_to_display = 'Sorry I do not recognize you.'
+                    result_to_display = 'Sorry I don\'t recognize you.'
                 cv2.putText(frame, result_to_display, (10,30), FONT, 1, (0, 255, 0), 2)
                 cv2.imshow('Face Image for Classification', frame)
                 cv2.waitKey(0)
@@ -79,11 +96,12 @@ def main():
                 cv2.waitKey(1)
                 cv2.waitKey(1)
                 cv2.waitKey(1)
-                # TODO move result file to old dir    
+                # TODO move result file to old dir
+                move_file(NEW_RESULT_PATH, OLD_RESULTS_DIR)
                 break
         rawCapture.truncate(0)
         print 'Waiting ...'
-        time.sleep(1)
+        time.sleep(2)
     return
 
 
