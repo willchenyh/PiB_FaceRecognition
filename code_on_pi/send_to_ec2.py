@@ -8,16 +8,16 @@ What this script does:
 5. read and present result
 """
 
-import glob, os, subprocess
+import glob, os, subprocess, time
 
-IMG_SRC_DIR = '/home/willchen/Documents/pib/code_on_pi/new_face'  # local
+IMG_SRC_DIR = '/home/pi/Documents/myProjects/PIB/face_recognition/code_on_pi/new_face'  # local
 IMG_DEST_DIR = '/home/ec2-user/Documents/code_on_ec2/new_face'  # ec2
-KEY_PAIR_PATH = '/home/willchen/Documents/pib/pib_fr.pem'  # local
+KEY_PAIR_PATH = '/home/pi/Documents/myProjects/PIB/face_recognition/code_on_pi/pib_fr.pem'  # local
 EC2_IP = 'ec2-user@ec2-35-167-141-186.us-west-2.compute.amazonaws.com'  # ec2
-OLD_IMAGES_DIR = '/home/willchen/Documents/pib/code_on_pi/old_faces'  # local
+OLD_IMAGES_DIR = '/home/pi/Documents/myProjects/PIB/face_recognition/code_on_pi/old_faces'  # local
 RESULT_SRC_DIR = '/home/ec2-user/Documents/code_on_ec2/new_result'  # ec2
-RESULT_DEST_DIR = '/home/willchen/Documents/pib/code_on_pi/new_result'  # local
-OLD_RESULTS_DIR = '/home/willchen/Documents/pib/code_on_pi/old_results'  # local
+RESULT_DEST_DIR = '/home/pi/Documents/myProjects/PIB/face_recognition/code_on_pi/new_result'  # local
+OLD_RESULTS_DIR = '/home/pi/Documents/myProjects/PIB/face_recognition/code_on_pi/old_results'  # local
 
 
 def check_new_file(path, num_files):
@@ -53,6 +53,13 @@ def fetch_file():
     return
 
 
+def extract_result_file(result_list):
+    result_path = result_list[0]
+    if result_path[-1] == 'r':
+        result_path = result_list[1]
+    return result_path
+
+
 def present_result(result_path):
     # present result
     result_file = open(result_path, 'r')
@@ -74,15 +81,26 @@ def main():
         new_result_present = False
         while not new_result_present:
             fetch_file()
-            new_result_path = check_new_file(RESULT_DEST_DIR, 2)
-            print new_result_path
-            if new_result_path is not None:
+            new_result_list = check_new_file(RESULT_DEST_DIR, 2)
+            print new_result_list
+            if new_result_list is not None:
                 print 'New result found!'
                 new_result_present = True
+                new_result_path = extract_result_file(new_result_list)
                 present_result(new_result_path)
                 move_file(new_result_path, OLD_RESULTS_DIR)
             else:
                 print 'Still thinking...'
+    else:
+        print 'Waiting'
+    return
+
+
+def loop():
+    print 'Starting ...'
+    while True:
+        main()
+        time.sleep(1)
     return
 
 
