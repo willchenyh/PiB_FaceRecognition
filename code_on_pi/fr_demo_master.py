@@ -12,10 +12,10 @@ from picamera import PiCamera
 from picamera.array import PiRGBArray
 
 
-CASCADE_PATH = 'haarcascade_frontalface_default.xml'
-NEW_FACE_PATH = 'new_face'
+CASCADE_PATH = '/home/pi/Documents/myProjects/PIB/face_recognition/code_on_pi/haarcascade_frontalface_default.xml'
+NEW_FACE_PATH = '/home/pi/Documents/myProjects/PIB/face_recognition/code_on_pi/new_face'
 NEW_FACE_NAME = 'new_face.jpg'
-NEW_IMAGE_PATH = 'new_image'
+NEW_IMAGE_PATH = '/home/pi/Documents/myProjects/PIB/face_recognition/code_on_pi/new_image'
 NEW_IMAGE_NAME = 'new_image.jpg'
 FONT = cv2.FONT_HERSHEY_SIMPLEX
 
