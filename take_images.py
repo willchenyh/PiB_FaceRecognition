@@ -22,8 +22,10 @@ if __name__ == '__main__':
     print 'Warming Up ... 3 seconds'
     time.sleep(3)
     print 'Starting ...'
-    counter = 0
-
+    counter_begin = 0
+    counter_end = 50
+    counter = counter_begin
+    
     for f in camera.capture_continuous(rawCapture, format='bgr', use_video_port=True):
         frame = f.array
         frame = cv2.resize(frame, (width/2, height/2))
@@ -33,16 +35,16 @@ if __name__ == '__main__':
             if w<120:
                 continue
             #cv2.rectangle(frame, (x,y), (x+w,y+h), (0,255,0), 2)
-            face = img[y-5:y+h+6,x-5:x+w+6]
+            face = img[y:y+h,x:x+w]
             counter += 1
-            img_name = 'willfaces/16_test'+str(counter)+'.jpg'
+            img_name = 'willfaces/17_test'+str(counter)+'.jpg'
             cv2.imwrite(img_name, face)
-        '''
+        
         cv2.imshow('Output', frame)
         cv2.waitKey(50)
-        '''
+        
         rawCapture.truncate(0)
         
         print counter
-        if counter>30:
+        if counter>counter_end:
             break
