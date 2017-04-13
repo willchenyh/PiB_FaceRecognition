@@ -25,6 +25,7 @@ if __name__ == '__main__':
     expression = 'sad' # normal, smile, sad
     will = '16'
     steven = '17'
+    simon = '18'
 
     # warm up and set up
     print 'Warming Up ... 3 seconds'
