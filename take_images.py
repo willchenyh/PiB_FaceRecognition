@@ -19,10 +19,10 @@ if __name__ == '__main__':
     rawCapture = PiRGBArray(camera, size=(width,height))
 
     # initialize values
-    counter_begin = 51
-    counter_end = 100 # index 1-50 is one lighting condition, 51-100 another.
+    counter_begin = 100
+    counter_end = 200 # index 1-50 is one lighting condition, 51-100 another.
     counter = counter_begin
-    expression = 'sad' # normal, smile, sad
+    expression = 'frontal' # normal, smile, sad
     will = '16'
     steven = '17'
     simon = '18'
@@ -34,8 +34,9 @@ if __name__ == '__main__':
     
     for f in camera.capture_continuous(rawCapture, format='bgr', use_video_port=True):
         frame = f.array
-        frame = cv2.resize(frame, (width/2, height/2))
+        #frame = cv2.resize(frame, (width/2, height/2))
         img = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        '''
         faces = face_cascade.detectMultiScale(img)
         for (x,y,w,h) in faces:
             if w<120:
@@ -45,7 +46,11 @@ if __name__ == '__main__':
             img_name = 'willfaces/'+will+'_'+expression+'_'+str(counter)+'.jpg'
             cv2.imwrite(img_name, face)
             counter += 1
-        
+        '''
+        img_name = 'willfaces/frontal/'+will+'_'+expression+'_'+str(counter)+'.jpg'
+        cv2.imwrite(img_name, img)
+        counter += 1
+
         cv2.imshow('Output', frame)
         cv2.waitKey(50)
         
