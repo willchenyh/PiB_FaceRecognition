@@ -19,10 +19,10 @@ if __name__ == '__main__':
     rawCapture = PiRGBArray(camera, size=(width,height))
 
     # initialize values
-    counter_begin = 100
-    counter_end = 200 # index 1-50 is one lighting condition, 51-100 another.
+    counter_begin = 120
+    counter_end = 135 # index 1-50 is one lighting condition, 51-100 another.
     counter = counter_begin
-    expression = 'frontal' # normal, smile, sad
+    expression = 'frontal2' # normal, smile, sad
     will = '16'
     steven = '17'
     simon = '18'
@@ -47,7 +47,7 @@ if __name__ == '__main__':
             cv2.imwrite(img_name, face)
             counter += 1
         '''
-        img_name = 'willfaces/frontal/'+will+'_'+expression+'_'+str(counter)+'.jpg'
+        img_name = 'willfaces/will_frontal_2/'+will+'_'+expression+'_'+str(counter)+'.jpg'
         cv2.imwrite(img_name, img)
         counter += 1
 
