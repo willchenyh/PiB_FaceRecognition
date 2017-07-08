@@ -1,6 +1,6 @@
 """
 What this script does:
-0. this will be run in openface root directory in docker
+0. this will be run in >>?
 0. assume the local host is already connected to ec2 instance
 1. check if a new face image is saved in IMG_SRC_DIR.
 2. process and classify the image
@@ -9,24 +9,25 @@ What this script does:
 """
 
 import glob, os, subprocess, time
+import classify
 
-IMG_SRC_DIR = '/host/Documents/code_on_ec2/new_face'  # ec2
-OLD_IMAGES_DIR = '/host/Documents/code_on_ec2/old_faces'  # ec2
-RESULT_DIR = '/host/Documents/code_on_ec2/new_result'  # ec2
-OLD_RESULTS_DIR = '/host/Documents/code_on_ec2/old_results'  # ec2
+IMG_SRC_DIR = '~/Documents/code_on_ec2/new_face'  # ec2
+OLD_IMAGES_DIR = '~/Documents/code_on_ec2/old_faces'  # ec2
+RESULT_DIR = '~/Documents/code_on_ec2/new_result'  # ec2
+OLD_RESULTS_DIR = '~/Documents/code_on_ec2/old_results'  # ec2
 RESULT_FILE_NAME = 'result.txt'
 
 
 def check_new_file(path, num_files):
-    new_file = None
+    new_file_path = None
     file_path = os.path.join(path,'*')
-    file_list = glob.glob(file_path)
+    file_list = sorted(glob.glob(file_path))
     #print file_path
     #print file_list
     num_files = int(num_files)
     if len(file_list) == num_files:
-        new_file = file_list[0:num_files]
-    return new_file
+        new_file_path = file_list[0:num_files]
+    return new_file_path
 
 
 def move_file(file_path, new_path):
@@ -35,9 +36,9 @@ def move_file(file_path, new_path):
     subprocess.call(move_command, shell=True)
     return
 
-
+'''
 def classify(image_path):
-    classify_command = './demos/classifier_test.py infer ./generated-embeddings/classifier.pkl '+image_path
+    classify_command = './demos/classifier_test.py infer ./generated-embeddings/classifier.pkl ' + image_path
     print classify_command
     subprocess.call(classify_command, shell=True)
     return
@@ -46,6 +47,14 @@ def classify(image_path):
 def classify_test(image_path):
     result_file = open('/host/Documents/code_on_ec2/new_result/result.txt', 'w')
     result_file.write('Will,0.75')
+    result_file.close()
+    return
+'''
+
+def classify_keras(file_path):
+    label, confidence = classify.make_pred(file_path)
+    result_file = open(os.path.join(RESULT_DIR, RESULT_FILE_NAME), 'w')
+    result_file.write('{},{}'.format(label, confidence))
     result_file.close()
     return
 
@@ -58,9 +67,8 @@ def main():
         new_image_path = new_image_path[0]
         # classify image
         print 'Let\'s see who you are...'
-        # TODO: call the classify script and save name and confidence level in a txt file
-        #classify(new_image_path)
-        classify(new_image_path)
+        # call the classify script and save name and confidence level in a txt file
+        classify_keras(new_image_path)
         print 'Now I know!'
         # clean up old
         move_file(new_image_path, OLD_IMAGES_DIR)
