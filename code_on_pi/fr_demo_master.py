@@ -59,7 +59,7 @@ def main():
             # cv2.rectangle(frame, (x,y), (x+w,y+h), (0,255,0), 2)
             face = img[y:y + h + 1, x:x + w + 1]
             face_path = os.path.join(NEW_FACE_PATH, NEW_FACE_NAME)
-            cv2.imwrite(face_path, img)
+            cv2.imwrite(face_path, face)
             #image_path = os.path.join(NEW_IMAGE_PATH, NEW_IMAGE_NAME)
             #cv2.imwrite(image_path, gimg)
             

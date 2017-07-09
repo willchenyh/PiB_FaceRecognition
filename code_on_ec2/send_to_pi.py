@@ -11,10 +11,10 @@ What this script does:
 import glob, os, subprocess, time
 import classify
 
-IMG_SRC_DIR = '~/Documents/code_on_ec2/new_face'  # ec2
-OLD_IMAGES_DIR = '~/Documents/code_on_ec2/old_faces'  # ec2
-RESULT_DIR = '~/Documents/code_on_ec2/new_result'  # ec2
-OLD_RESULTS_DIR = '~/Documents/code_on_ec2/old_results'  # ec2
+IMG_SRC_DIR = '/home/ec2-user/Documents/code_on_ec2/new_face'  # ec2
+OLD_IMAGES_DIR = '/home/ec2-user/Documents/code_on_ec2/old_faces'  # ec2
+RESULT_DIR = '/home/ec2-user/Documents/code_on_ec2/new_result'  # ec2
+OLD_RESULTS_DIR = '/home/ec2-user/Documents/code_on_ec2/old_results'  # ec2
 RESULT_FILE_NAME = 'result.txt'
 
 
@@ -54,7 +54,12 @@ def classify_test(image_path):
 def classify_keras(file_path):
     label, confidence = classify.make_pred(file_path)
     result_file = open(os.path.join(RESULT_DIR, RESULT_FILE_NAME), 'w')
-    result_file.write('{},{}'.format(label, confidence))
+    if int(label) == 19:
+        person = 'Will'
+    else:
+        person = 'Other'
+    result = ','.join([person, str(confidence)])
+    result_file.write(result)
     result_file.close()
     return
 

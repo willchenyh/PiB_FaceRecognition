@@ -10,10 +10,10 @@ What this script does:
 
 import glob, os, subprocess, time
 
+EC2_IP = 'ec2-user@ec2-35-167-141-186.us-west-2.compute.amazonaws.com'  # ec2 TODO
 IMG_SRC_DIR = '/home/pi/Documents/myProjects/PIB/face_recognition/code_on_pi/new_face'  # local
 IMG_DEST_DIR = '/home/ec2-user/Documents/code_on_ec2/new_face'  # ec2
 KEY_PAIR_PATH = '/home/pi/Documents/myProjects/PIB/face_recognition/code_on_pi/pib_fr.pem'  # local
-EC2_IP = 'ec2-user@ec2-35-167-141-186.us-west-2.compute.amazonaws.com'  # ec2
 OLD_IMAGES_DIR = '/home/pi/Documents/myProjects/PIB/face_recognition/code_on_pi/old_faces'  # local
 RESULT_SRC_DIR = '/home/ec2-user/Documents/code_on_ec2/new_result'  # ec2
 RESULT_DEST_DIR = '/home/pi/Documents/myProjects/PIB/face_recognition/code_on_pi/new_result'  # local
@@ -21,15 +21,15 @@ OLD_RESULTS_DIR = '/home/pi/Documents/myProjects/PIB/face_recognition/code_on_pi
 
 
 def check_new_file(path, num_files):
-    new_file = None
+    new_file_path = None
     file_path = os.path.join(path,'*')
-    file_list = glob.glob(file_path)
+    file_list = sorted(glob.glob(file_path))
     #print file_path
     #print file_list
     num_files = int(num_files)
     if len(file_list) == num_files:
-        new_file = file_list[0:num_files]
-    return new_file
+        new_file_path = file_list[0:num_files]
+    return new_file_path
 
 
 def send_file(file_path):
@@ -69,10 +69,11 @@ def present_result(result_path):
 
 
 def main():
-    # if a new face image is saved, send it to ec2 instance
+    # check if a new face image is saved on pi
     new_image_path = check_new_file(IMG_SRC_DIR, 1)
     if new_image_path is not None:
         print 'New face image found!'
+        # send it to ec2, and archive it
         new_image_path = new_image_path[0]
         send_file(new_image_path)
         move_file(new_image_path, OLD_IMAGES_DIR)
