@@ -19,6 +19,7 @@ OLD_RESULTS_DIR = '/home/ec2-user/Documents/code_on_ec2/old_results'  # ec2
 RESULT_FILE_NAME = 'result.txt'
 
 # read model
+model_path = '/home/ec2-user/Documents/vgg16_fr_withNewFrontal_3_weights.h5'
 model = load_model(model_path)
 model.summary()
 

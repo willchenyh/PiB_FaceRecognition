@@ -7,9 +7,8 @@ import random
 
 img_height, img_width, num_channel = 224, 224, 3
 mean_pixel = np.array([104., 117., 123.]).reshape((1,1,3))
-test_data_dir = 'data/test'
 # face paths
-model_path = '/home/ec2-user/Documents/vgg16_fr_withNewFrontal_3_weights.h5'
+
 #img_path_1 = '/home/ec2-user/Documents/PIB_FR_CNN/raw_data/will/test/16_test{}.jpg'.format('20')
 #img_path_2 = '/home/ec2-user/Documents/PIB_FR_CNN/data/test/19/16_normal_{}.jpg'.format('14')
 
