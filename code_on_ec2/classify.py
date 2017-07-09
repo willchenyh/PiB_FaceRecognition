@@ -12,13 +12,11 @@ test_data_dir = 'data/test'
 model_path = '/home/ec2-user/Documents/vgg16_fr_withNewFrontal_3_weights.h5'
 #img_path_1 = '/home/ec2-user/Documents/PIB_FR_CNN/raw_data/will/test/16_test{}.jpg'.format('20')
 #img_path_2 = '/home/ec2-user/Documents/PIB_FR_CNN/data/test/19/16_normal_{}.jpg'.format('14')
-# read model
-model = load_model(model_path)
-model.summary()
+
 #model.compile(optimizer=optimizers.SGD(lr=1e-4, momentum=0.9), loss='categorical_crossentropy')
 
 
-def make_pred(img_path):
+def make_pred(img_path, model):
     # predict label for a new image
     print img_path
     new_img = cv2.imread(img_path, 1)

@@ -10,12 +10,17 @@ What this script does:
 
 import glob, os, subprocess, time
 import classify
+from keras.models import load_model
 
 IMG_SRC_DIR = '/home/ec2-user/Documents/code_on_ec2/new_face'  # ec2
 OLD_IMAGES_DIR = '/home/ec2-user/Documents/code_on_ec2/old_faces'  # ec2
 RESULT_DIR = '/home/ec2-user/Documents/code_on_ec2/new_result'  # ec2
 OLD_RESULTS_DIR = '/home/ec2-user/Documents/code_on_ec2/old_results'  # ec2
 RESULT_FILE_NAME = 'result.txt'
+
+# read model
+model = load_model(model_path)
+model.summary()
 
 
 def check_new_file(path, num_files):
@@ -51,8 +56,8 @@ def classify_test(image_path):
     return
 '''
 
-def classify_keras(file_path):
-    label, confidence = classify.make_pred(file_path)
+def classify_keras(file_path, md):
+    label, confidence = classify.make_pred(file_path, md)
     result_file = open(os.path.join(RESULT_DIR, RESULT_FILE_NAME), 'w')
     if int(label) == 19:
         person = 'Will'
@@ -73,7 +78,7 @@ def main():
         # classify image
         print 'Let\'s see who you are...'
         # call the classify script and save name and confidence level in a txt file
-        classify_keras(new_image_path)
+        classify_keras(new_image_path, model)
         print 'Now I know!'
         # clean up old
         move_file(new_image_path, OLD_IMAGES_DIR)
