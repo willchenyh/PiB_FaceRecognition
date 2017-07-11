@@ -10,7 +10,7 @@ What this script does:
 
 import glob, os, subprocess, time
 
-EC2_IP = 'ec2-user@ec2-52-35-110-194.us-west-2.compute.amazonaws.com'  # ec2 TODO
+EC2_IP = 'ec2-54-71-111-245.us-west-2.compute.amazonaws.com'  # ec2 TODO
 IMG_SRC_DIR = '/home/pi/Documents/myProjects/PIB/face_recognition/code_on_pi/new_face'  # local
 IMG_DEST_DIR = '/home/ec2-user/Documents/code_on_ec2/new_face'  # ec2
 KEY_PAIR_PATH = '/home/pi/Documents/myProjects/PIB/face_recognition/code_on_pi/pib_fr.pem'  # local
