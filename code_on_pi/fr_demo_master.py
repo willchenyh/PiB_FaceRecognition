@@ -59,7 +59,7 @@ def main():
             # cv2.rectangle(frame, (x,y), (x+w,y+h), (0,255,0), 2)
             face = img[y:y + h + 1, x:x + w + 1]
             face_path = os.path.join(NEW_FACE_PATH, NEW_FACE_NAME)
-            cv2.imwrite(face_path, img)
+            cv2.imwrite(face_path, face)
             #image_path = os.path.join(NEW_IMAGE_PATH, NEW_IMAGE_NAME)
             #cv2.imwrite(image_path, gimg)
             
@@ -84,7 +84,7 @@ def main():
                 print name, conf
                 # display on face image
                 #conf = 0.8
-                if name == 'will' and float(conf) > 0.6:
+                if name == 'Will' and float(conf) > 0.6:
                     result_to_display = 'Hey Will!'
                 else:
                     result_to_display = 'Sorry I don\'t know you.'
