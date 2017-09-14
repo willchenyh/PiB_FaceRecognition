@@ -10,15 +10,16 @@ What this script does:
 import cv2, glob, os, time
 from picamera import PiCamera
 from picamera.array import PiRGBArray
+import send_to_ec2 as send_file
 
 
-CASCADE_PATH = '/home/pi/Documents/PIB/code_on_pi/haarcascade_frontalface_default.xml'
-NEW_FACE_PATH = '/home/pi/Documents/PIB/code_on_pi/new_face'
+CASCADE_PATH = '/home/pi/PiB_FaceRecognition/code_on_pi/haarcascade_frontalface_default.xml'
+NEW_FACE_PATH = '/home/pi/PiB_FaceRecognition/code_on_pi/new_face'
 NEW_FACE_NAME = 'new_face.jpg'
-NEW_IMAGE_PATH = '/home/pi/Documents/PIB/ode_on_pi/new_image'
-NEW_IMAGE_NAME = 'new_image.jpg'
-NEW_RESULT_PATH = '/home/pi/Documents/PIB/code_on_pi/new_result/result.txt'  # local
-OLD_RESULTS_DIR = '/home/pi/Documents/PIB/code_on_pi/old_results'  # local
+#NEW_IMAGE_PATH = '/home/pi/PiB_FaceRecognition/code_on_pi/new_image'
+#NEW_IMAGE_NAME = 'new_image.jpg'
+NEW_RESULT_PATH = '/home/pi/PiB_FaceRecognition/code_on_pi/new_result/result.txt'  # local
+OLD_RESULTS_DIR = '/home/pi/PiB_FaceRecognition/code_on_pi/old_results'  # local
 SEND_FILE_COMMAND = 'python /home/pi/Documents/PIB/code_on_pi/send_to_ec2.py'
 FONT = cv2.FONT_HERSHEY_SIMPLEX
 
@@ -42,7 +43,7 @@ def main():
     camera.resolution = (width, height)  # TODO
     rawCapture = PiRGBArray(camera, size=(width, height))
     # warm up and set up
-    print 'Let me get ready ... 3 seconds ...'
+    print 'Let me get ready ... 2 seconds ...'
     time.sleep(2)
     print 'Starting ...'
 
@@ -75,7 +76,8 @@ def main():
             
             if answer == 1:
                 # TODO 3. send it for classification and fetch result.
-                os.system(SEND_FILE_COMMAND)
+                #os.system(SEND_FILE_COMMAND)
+                send_file.main()
                 # TODO read result
                 result_file = open(NEW_RESULT_PATH, 'r')
                 result = result_file.read()

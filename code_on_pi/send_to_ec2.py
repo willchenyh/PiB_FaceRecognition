@@ -11,13 +11,13 @@ What this script does:
 import glob, os, subprocess, time
 
 EC2_IP = 'ec2-user@ec2-52-25-37-56.us-west-2.compute.amazonaws.com'  # ec2 TODO
-IMG_SRC_DIR = '/home/pi/Documents/PIB/code_on_pi/new_face'  # local
-IMG_DEST_DIR = '/home/ec2-user/Documents/code_on_ec2/new_face'  # ec2
-KEY_PAIR_PATH = '/home/pi/Documents/PIB/code_on_pi/aws_personal.pem'  # local
-OLD_IMAGES_DIR = '/home/pi/Documents/PIB/code_on_pi/old_faces'  # local
-RESULT_SRC_DIR = '/home/ec2-user/Documents/code_on_ec2/new_result'  # ec2
-RESULT_DEST_DIR = '/home/pi/Documents/PIB/code_on_pi/new_result'  # local
-OLD_RESULTS_DIR = '/home/pi/Documents/PIB/code_on_pi/old_results'  # local
+IMG_SRC_DIR = '~/PiB_FaceRecognition/code_on_pi/new_face'  # local
+IMG_DEST_DIR = '~/PiB_FaceRecognition/code_on_ec2/new_face'  # ec2
+KEY_PAIR_PATH = '~/PiB_FaceRecognition/code_on_pi/aws_personal.pem'  # local
+OLD_IMAGES_DIR = '~/PiB_FaceRecognition/code_on_pi/old_faces'  # local
+RESULT_SRC_DIR = '~/PiB_FaceRecognition/code_on_ec2/new_result'  # ec2
+RESULT_DEST_DIR = '~/PiB_FaceRecognition/code_on_pi/new_result'  # local
+OLD_RESULTS_DIR = '~/PiB_FaceRecognition/code_on_pi/old_results'  # local
 
 
 def check_new_file(path, num_files):
@@ -102,17 +102,11 @@ def main():
         print 'Waiting'
     return
 
-
+"""
 def loop():
     print 'Starting ...'
     while True:
         main()
         time.sleep(1)
     return
-
-
-if __name__ == "__main__":
-    main()
-
-
-
+"""
