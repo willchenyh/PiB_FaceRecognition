@@ -12,14 +12,14 @@ import glob, os, subprocess, time
 import classify
 from keras.models import load_model
 
-IMG_SRC_DIR = '/home/ec2-user/Documents/code_on_ec2/new_face'  # ec2
-OLD_IMAGES_DIR = '/home/ec2-user/Documents/code_on_ec2/old_faces'  # ec2
-RESULT_DIR = '/home/ec2-user/Documents/code_on_ec2/new_result'  # ec2
-OLD_RESULTS_DIR = '/home/ec2-user/Documents/code_on_ec2/old_results'  # ec2
+IMG_SRC_DIR = '/home/ec2-user/PiB_FaceRecognition/code_on_ec2/new_face'  # ec2
+OLD_IMAGES_DIR = '/home/ec2-user/PiB_FaceRecognition/code_on_ec2/old_faces'  # ec2
+RESULT_DIR = '/home/ec2-user/PiB_FaceRecognition/code_on_ec2/new_result'  # ec2
+OLD_RESULTS_DIR = '/home/ec2-user/PiB_FaceRecognition/code_on_ec2/old_results'  # ec2
 RESULT_FILE_NAME = 'result.txt'
 
 # read model
-model_path = '/home/ec2-user/Documents/vgg16_new_version_weights.h5'
+model_path = '/home/ec2-user/vgg16_new_version_weights.h5'
 model = load_model(model_path)
 model.summary()
 

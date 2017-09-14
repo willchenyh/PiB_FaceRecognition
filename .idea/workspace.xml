@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4e73e720-fa65-4425-92aa-82b173ae1f40" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code_on_pi/send_to_ec2.py" afterPath="$PROJECT_DIR$/code_on_pi/send_to_ec2.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code_on_ec2/send_to_pi.py" afterPath="$PROJECT_DIR$/code_on_ec2/send_to_pi.py" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,23 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="fr_demo_master.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code_on_pi/fr_demo_master.py">
+      <file leaf-file-name="send_to_pi.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/code_on_ec2/send_to_pi.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="24" lean-forward="false" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="24" />
-              <folding>
-                <element signature="e#266#292#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="send_to_ec2.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/code_on_pi/send_to_ec2.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="32" lean-forward="false" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
+            <state relative-caret-position="323">
+              <caret line="21" column="28" lean-forward="false" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -61,12 +49,12 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/code_on_ec2/classify.py" />
-        <option value="$PROJECT_DIR$/code_on_ec2/send_to_pi.py" />
         <option value="$PROJECT_DIR$/Demo.py" />
         <option value="$PROJECT_DIR$/CNN/train_vgg.py" />
         <option value="$PROJECT_DIR$/CNN/test_vgg.py" />
         <option value="$PROJECT_DIR$/code_on_pi/fr_demo_master.py" />
         <option value="$PROJECT_DIR$/code_on_pi/send_to_ec2.py" />
+        <option value="$PROJECT_DIR$/code_on_ec2/send_to_pi.py" />
       </list>
     </option>
   </component>
@@ -431,13 +419,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code_on_ec2/send_to_pi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="21" column="75" lean-forward="false" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Demo.py" />
     <entry file="file://$PROJECT_DIR$/CNN/readModel_v2.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -474,6 +455,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="32" lean-forward="false" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code_on_ec2/send_to_pi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="21" column="28" lean-forward="false" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
           <folding />
         </state>
       </provider>
