@@ -42,13 +42,7 @@ def load_model():
     model = Model(inputs=base_model.input, outputs=predictions)
     print 'Build model'
 
-    # freeze the bottom 15 layers and train only the top 8 layers
-    for layer in model.layers[:15]:
-        layer.trainable = False
-    print 'Freeze 15 layers'
-    model.summary()
-
-    # compile the model (should be done *after* setting layers to non-trainable)
+    # compile the model
     model.compile(optimizer=optimizers.SGD(lr=1e-4, momentum=0.9), loss='categorical_crossentropy',
                   metrics=['accuracy'])
     print 'Compile model'
@@ -102,18 +96,14 @@ def main():
     # make model
     model = load_model()
     print 'VGG16 created\n'
-
-    # read train and validation data and train the model for n epochs
-    for i in range(NUM_EPOCHS):
-        # Get data
-        print '# iteration:', i
-        print 'Load train data:'
-        X_train, Y_train = load_data(TRAIN_DIR)
-        print 'Load val data:'
-        X_val, Y_val = load_data(VAL_DIR)
-        # Train model
-        model.fit(X_train, Y_train, batch_size=BATCH_SIZE, epochs=1, validation_data=(X_val, Y_val))
-        print '\n'
+    # Get data
+    print 'Load train data:'
+    X_train, Y_train = load_data(TRAIN_DIR)
+    print 'Load val data:'
+    X_val, Y_val = load_data(VAL_DIR)
+    # Train model
+    model.fit(X_train, Y_train, batch_size=BATCH_SIZE, epochs=5, validation_data=(X_val, Y_val))
+    print '\n'
     # Save model weights
     model.save('vgg16_{}_weights.h5'.format(TASK_NAME))
     print 'model weights saved.'
