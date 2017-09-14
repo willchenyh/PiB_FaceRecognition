@@ -16,14 +16,9 @@ FACE = True
 MNIST = False
 if FACE:
     # face paths
-    model_path = 'vgg16_fr_withNewFrontal_3_weights.h5'
+    model_path = '../vgg16_new_version_weights.h5'
     img_path_1 = '/home/ec2-user/Documents/PIB_FR_CNN/raw_data/will/test/16_test{}.jpg'.format('20')
     img_path_2 = '/home/ec2-user/Documents/PIB_FR_CNN/data/test/19/16_normal_{}.jpg'.format('14')
-elif MNIST:
-    # mnist paths
-    model_path = 'vgg16_mnist_weights.h5'
-    img_path_1 = '/home/ec2-user/Documents/examples/mnist/test_mnist_image.jpg'
-    img_path_2 = '/home/ec2-user/Documents/examples/mnist/data/0_10.jpg'
 
 
 def make_pred(img_path, model):
