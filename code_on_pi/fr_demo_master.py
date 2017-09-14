@@ -10,7 +10,7 @@ What this script does:
 import cv2, glob, os, time
 from picamera import PiCamera
 from picamera.array import PiRGBArray
-import send_to_ec2 as send_file
+import send_to_ec2
 
 
 CASCADE_PATH = '/home/pi/PiB_FaceRecognition/code_on_pi/haarcascade_frontalface_default.xml'
@@ -77,7 +77,7 @@ def main():
             if answer == 1:
                 # TODO 3. send it for classification and fetch result.
                 #os.system(SEND_FILE_COMMAND)
-                send_file.main()
+                send_to_ec2.main()
                 # TODO read result
                 result_file = open(NEW_RESULT_PATH, 'r')
                 result = result_file.read()
