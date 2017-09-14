@@ -34,9 +34,9 @@ if __name__ == '__main__':
     
     for f in camera.capture_continuous(rawCapture, format='bgr', use_video_port=True):
         frame = f.array
-        #frame = cv2.resize(frame, (width/2, height/2))
+        frame = cv2.resize(frame, (width/2, height/2))
         img = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        '''
+        
         faces = face_cascade.detectMultiScale(img)
         for (x,y,w,h) in faces:
             if w<120:
@@ -46,16 +46,16 @@ if __name__ == '__main__':
             img_name = 'willfaces/'+will+'_'+expression+'_'+str(counter)+'.jpg'
             cv2.imwrite(img_name, face)
             counter += 1
-        '''
-        img_name = 'willfaces/will_frontal_3/'+will+'_'+expression+'_'+str(counter)+'.jpg'
-        cv2.imwrite(img_name, img)
-        counter += 1
-
+        
+            img_name = 'willfaces/will_frontal_3/'+will+'_'+expression+'_'+str(counter)+'.jpg'
+            cv2.imwrite(img_name, img)
+            counter += 1
+            print counter
         cv2.imshow('Output', frame)
         cv2.waitKey(50)
         
         rawCapture.truncate(0)
         
-        print counter
+        
         if counter==counter_end:
             break

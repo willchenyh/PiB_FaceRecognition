@@ -12,14 +12,14 @@ from picamera import PiCamera
 from picamera.array import PiRGBArray
 
 
-CASCADE_PATH = '/home/pi/Documents/myProjects/PIB/face_recognition/code_on_pi/haarcascade_frontalface_default.xml'
-NEW_FACE_PATH = '/home/pi/Documents/myProjects/PIB/face_recognition/code_on_pi/new_face'
+CASCADE_PATH = '/home/pi/Documents/PIB/code_on_pi/haarcascade_frontalface_default.xml'
+NEW_FACE_PATH = '/home/pi/Documents/PIB/code_on_pi/new_face'
 NEW_FACE_NAME = 'new_face.jpg'
-NEW_IMAGE_PATH = '/home/pi/Documents/myProjects/PIB/face_recognition/code_on_pi/new_image'
+NEW_IMAGE_PATH = '/home/pi/Documents/PIB/ode_on_pi/new_image'
 NEW_IMAGE_NAME = 'new_image.jpg'
-NEW_RESULT_PATH = '/home/pi/Documents/myProjects/PIB/face_recognition/code_on_pi/new_result/result.txt'  # local
-OLD_RESULTS_DIR = '/home/pi/Documents/myProjects/PIB/face_recognition/code_on_pi/old_results'  # local
-SEND_FILE_COMMAND = 'python /home/pi/Documents/myProjects/PIB/face_recognition/code_on_pi/send_to_ec2.py'
+NEW_RESULT_PATH = '/home/pi/Documents/PIB/code_on_pi/new_result/result.txt'  # local
+OLD_RESULTS_DIR = '/home/pi/Documents/PIB/code_on_pi/old_results'  # local
+SEND_FILE_COMMAND = 'python /home/pi/Documents/PIB/code_on_pi/send_to_ec2.py'
 FONT = cv2.FONT_HERSHEY_SIMPLEX
 
 
@@ -52,6 +52,7 @@ def main():
         frame = cv2.resize(frame, (width / 2, height / 2))
         img = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         faces = face_cascade.detectMultiScale(img)
+        
         for (x, y, w, h) in faces:
             if w < 120:
                 continue
@@ -83,8 +84,7 @@ def main():
                 conf = details[1]
                 print name, conf
                 # display on face image
-                #conf = 0.8
-                if name == 'Will' and float(conf) > 0.6:
+                if name == 'Will' and float(conf) > 0.9:
                     result_to_display = 'Hey Will!'
                 else:
                     result_to_display = 'Sorry I don\'t know you.'
@@ -99,6 +99,7 @@ def main():
                 # TODO move result file to old dir
                 move_file(NEW_RESULT_PATH, OLD_RESULTS_DIR)
                 break
+
         rawCapture.truncate(0)
         print 'Waiting ...'
         time.sleep(2)

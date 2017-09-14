@@ -10,22 +10,24 @@ What this script does:
 
 import glob, os, subprocess, time
 
-EC2_IP = 'ec2-user@'+'ec2-54-71-111-245.us-west-2.compute.amazonaws.com'  # ec2 TODO
-IMG_SRC_DIR = '/home/pi/Documents/myProjects/PIB/face_recognition/code_on_pi/new_face'  # local
+EC2_IP = 'ec2-user@ec2-52-25-37-56.us-west-2.compute.amazonaws.com'  # ec2 TODO
+IMG_SRC_DIR = '/home/pi/Documents/PIB/code_on_pi/new_face'  # local
 IMG_DEST_DIR = '/home/ec2-user/Documents/code_on_ec2/new_face'  # ec2
-KEY_PAIR_PATH = '/home/pi/Documents/myProjects/PIB/face_recognition/code_on_pi/pib_fr.pem'  # local
-OLD_IMAGES_DIR = '/home/pi/Documents/myProjects/PIB/face_recognition/code_on_pi/old_faces'  # local
+KEY_PAIR_PATH = '/home/pi/Documents/PIB/code_on_pi/aws_personal.pem'  # local
+OLD_IMAGES_DIR = '/home/pi/Documents/PIB/code_on_pi/old_faces'  # local
 RESULT_SRC_DIR = '/home/ec2-user/Documents/code_on_ec2/new_result'  # ec2
-RESULT_DEST_DIR = '/home/pi/Documents/myProjects/PIB/face_recognition/code_on_pi/new_result'  # local
-OLD_RESULTS_DIR = '/home/pi/Documents/myProjects/PIB/face_recognition/code_on_pi/old_results'  # local
+RESULT_DEST_DIR = '/home/pi/Documents/PIB/code_on_pi/new_result'  # local
+OLD_RESULTS_DIR = '/home/pi/Documents/PIB/code_on_pi/old_results'  # local
 
 
 def check_new_file(path, num_files):
     new_file_path = None
     file_path = os.path.join(path,'*')
     file_list = sorted(glob.glob(file_path))
-    #print file_path
-    #print file_list
+    
+    print file_path
+    print file_list
+    
     num_files = int(num_files)
     if len(file_list) == num_files:
         new_file_path = file_list[0:num_files]
@@ -69,8 +71,10 @@ def present_result(result_path):
 
 
 def main():
+    print 'in main'
     # check if a new face image is saved on pi
     new_image_path = check_new_file(IMG_SRC_DIR, 1)
+    print new_image_path
     if new_image_path is not None:
         print 'New face image found!'
         # send it to ec2, and archive it
