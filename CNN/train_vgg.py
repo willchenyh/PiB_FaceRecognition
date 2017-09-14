@@ -9,7 +9,6 @@ Use this as a template to:
 4. save weights
 """
 
-
 from keras.models import Model
 from keras.applications.vgg16 import VGG16
 from keras import optimizers
@@ -100,7 +99,7 @@ def load_data(src_path):
 
 
 def main():
-	# make model
+    # make model
     model = load_model()
     print 'VGG16 created\n'
 
@@ -113,11 +112,7 @@ def main():
         print 'Load val data:'
         X_val, Y_val = load_data(VAL_DIR)
         # Train model
-        model.fit(X_train, Y_train, 
-        		  batch_size=BATCH_SIZE,
-                  epochs=1,
-                  verbose=1,
-                  validation_data=(X_val, Y_val))
+        model.fit(X_train, Y_train, batch_size=BATCH_SIZE, epochs=1, validation_data=(X_val, Y_val))
         print '\n'
     # Save model weights
     model.save('vgg16_{}_weights.h5'.format(TASK_NAME))
