@@ -20,8 +20,8 @@ from keras.utils.np_utils import to_categorical
 import glob
 import os
 
-TEST_DIR = 'data/test'
-MODEL_PATH = 'vgg16_fr_withNewFrontal_3_weights.h5'
+TEST_DIR = '../data/test'
+MODEL_PATH = '/home/ec2-user/vgg16_new_version_weights.h5'
 IMG_H, IMG_W, NUM_CHANNELS = 224, 224, 3
 MEAN_PIXEL = np.array([104., 117., 123.]).reshape((1,1,3))
 NUM_EPOCHS = 10
@@ -62,8 +62,6 @@ def main():
     score = model.evaluate(X_test, Y_test, BATCH_SIZE)
     print model.metrics_names
     print score
-    print('Test loss:', score[0])
-    print('Test accuracy:', score[1])
     return
 
 
