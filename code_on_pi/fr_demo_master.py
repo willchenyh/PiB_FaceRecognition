@@ -56,7 +56,9 @@ def main():
         for (x, y, w, h) in faces:
             if w < 120:
                 continue
-            print 'Face detected'
+            print '=================================='
+            print 'Face detected!'
+
             # cv2.rectangle(frame, (x,y), (x+w,y+h), (0,255,0), 2)
             face = img[y:y + h + 1, x:x + w + 1]
             face_path = os.path.join(NEW_FACE_PATH, NEW_FACE_NAME)
@@ -72,6 +74,7 @@ def main():
             cv2.waitKey(1)
             cv2.waitKey(1)
             answer = input('Confirm image (1-yes / 0-no): ')
+            print '=================================='
             
             if answer == 1:
                 # send it for classification and fetch result.
@@ -97,7 +100,7 @@ def main():
                 break
 
         rawCapture.truncate(0)
-        print 'Waiting ...'
+        print 'Waiting for new images...'
         time.sleep(2)
     return
 
