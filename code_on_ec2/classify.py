@@ -37,5 +37,3 @@ def make_pred(img_path, model):
     #print 'Predicted label:', lb
     #print keras.utils.np_utils.probas_to_classes(scores)
     return lb, conf
-
-
