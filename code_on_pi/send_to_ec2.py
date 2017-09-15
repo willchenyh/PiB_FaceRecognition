@@ -8,16 +8,18 @@ What this script does:
 5. read and present result
 """
 
-import glob, os, subprocess, shutil
+import glob, os, subprocess
 
 EC2_IP = 'ec2-user@ec2-52-25-37-56.us-west-2.compute.amazonaws.com'  # ec2 TODO
+KEY_PAIR_PATH = '/home/pi/PiB_FaceRecognition/code_on_pi/aws_personal.pem'  # local TODO
+
 IMG_SRC_DIR = '/home/pi/PiB_FaceRecognition/code_on_pi/new_face'  # local
 IMG_DEST_DIR = '/home/ec2-user/PiB_FaceRecognition/code_on_ec2/new_face'  # ec2
-KEY_PAIR_PATH = '/home/pi/PiB_FaceRecognition/code_on_pi/aws_personal.pem'  # local
-OLD_IMAGES_DIR = '/home/pi/PiB_FaceRecognition/code_on_pi/old_faces'  # local
+
+#OLD_IMAGES_DIR = '/home/pi/PiB_FaceRecognition/code_on_pi/old_faces'  # local
 RESULT_SRC_DIR = '/home/ec2-user/PiB_FaceRecognition/code_on_ec2/new_result'  # ec2
 RESULT_DEST_DIR = '/home/pi/PiB_FaceRecognition/code_on_pi/new_result'  # local
-OLD_RESULTS_DIR = '/home/pi/PiB_FaceRecognition/code_on_pi/old_results'  # local
+#OLD_RESULTS_DIR = '/home/pi/PiB_FaceRecognition/code_on_pi/old_results'  # local
 
 
 def check_new_file(path, num_files):
@@ -38,7 +40,9 @@ def send_file(file_path):
     send_command = ' '.join(['scp', '-i', KEY_PAIR_PATH, file_path, EC2_IP+':'+IMG_DEST_DIR])
     #print send_command
     subprocess.call(send_command, shell=True)
+    print '=================================='
     print 'sending file to server'
+    print '=================================='
     return
 
 """
@@ -53,10 +57,12 @@ def fetch_file():
     fetch_command = ' '.join(['scp', '-i', KEY_PAIR_PATH, EC2_IP+':'+RESULT_SRC_DIR+'/*', RESULT_DEST_DIR])
     #print fetch_command
     subprocess.call(fetch_command, shell=True)
+    print '=================================='
     print 'getting results from server'
+    print '=================================='
     return
 
-"""
+
 def extract_result_file(result_list):
     result_path = result_list[0]
     if result_path[-1] == 'r':
@@ -68,9 +74,12 @@ def present_result(result_path):
     # present result
     result_file = open(result_path, 'r')
     result = result_file.read()
-    print result
-    return
-"""
+    details = result.split(',')
+    name = details[0]
+    conf = details[1]
+    print name, conf
+    return name, conf
+
 
 def main():
 
@@ -78,32 +87,35 @@ def main():
     new_image_path = check_new_file(IMG_SRC_DIR, 1)
 
     if new_image_path is not None:
+        print '=================================='
         print 'New face image found!'
         # send it to ec2, and archive it
         new_image_path = new_image_path[0]
         send_file(new_image_path)
         #shutil.move(new_image_path, OLD_IMAGES_DIR)
         os.remove(new_image_path)
+        print '=================================='
         print 'Let\'s see who you are...'
         # look for new result
         new_result_present = False
         while not new_result_present:
             fetch_file()
             new_result_list = check_new_file(RESULT_DEST_DIR, 2)
-            print new_result_list
+            #print new_result_list
             if new_result_list is not None:
                 print 'New result found!'
-                new_result_present = True
-                #new_result_path = extract_result_file(new_result_list)
-                #present_result(new_result_path)
+                #new_result_present = True
+                new_result_path = extract_result_file(new_result_list)
                 """
                 move_file(new_result_path, OLD_RESULTS_DIR)
                 """
+                return present_result(new_result_path)
+
             else:
                 print 'Still thinking...'
     else:
         print 'Waiting for new images'
-    return
+    #return
 
 """
 def loop():
