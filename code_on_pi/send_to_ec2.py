@@ -8,7 +8,7 @@ What this script does:
 5. read and present result
 """
 
-import glob, os, subprocess, time
+import glob, os, subprocess, shutil
 
 EC2_IP = 'ec2-user@ec2-52-25-37-56.us-west-2.compute.amazonaws.com'  # ec2 TODO
 IMG_SRC_DIR = '/home/pi/PiB_FaceRecognition/code_on_pi/new_face'  # local
@@ -36,25 +36,27 @@ def check_new_file(path, num_files):
 
 def send_file(file_path):
     send_command = ' '.join(['scp', '-i', KEY_PAIR_PATH, file_path, EC2_IP+':'+IMG_DEST_DIR])
-    print send_command
+    #print send_command
     subprocess.call(send_command, shell=True)
+    print 'sending file to server'
     return
 
-
+"""
 def move_file(in_file_path, out_file_path):
     move_command = ' '.join(['mv', in_file_path, out_file_path])
     print move_command
     subprocess.call(move_command, shell=True)
     return
-
+"""
 
 def fetch_file():
     fetch_command = ' '.join(['scp', '-i', KEY_PAIR_PATH, EC2_IP+':'+RESULT_SRC_DIR+'/*', RESULT_DEST_DIR])
-    print fetch_command
+    #print fetch_command
     subprocess.call(fetch_command, shell=True)
+    print 'getting results from server'
     return
 
-
+"""
 def extract_result_file(result_list):
     result_path = result_list[0]
     if result_path[-1] == 'r':
@@ -68,19 +70,19 @@ def present_result(result_path):
     result = result_file.read()
     print result
     return
-
+"""
 
 def main():
-    print 'in main'
+
     # check if a new face image is saved on pi
     new_image_path = check_new_file(IMG_SRC_DIR, 1)
-    print new_image_path
+
     if new_image_path is not None:
         print 'New face image found!'
         # send it to ec2, and archive it
         new_image_path = new_image_path[0]
         send_file(new_image_path)
-        move_file(new_image_path, OLD_IMAGES_DIR)
+        shutil.move(new_image_path, OLD_IMAGES_DIR)
         print 'Let\'s see who you are...'
         # look for new result
         new_result_present = False
@@ -91,15 +93,15 @@ def main():
             if new_result_list is not None:
                 print 'New result found!'
                 new_result_present = True
-                new_result_path = extract_result_file(new_result_list)
-                present_result(new_result_path)
+                #new_result_path = extract_result_file(new_result_list)
+                #present_result(new_result_path)
                 """
                 move_file(new_result_path, OLD_RESULTS_DIR)
                 """
             else:
                 print 'Still thinking...'
     else:
-        print 'Waiting'
+        print 'Waiting for new images'
     return
 
 """

@@ -7,7 +7,7 @@ What this script does:
 4. show result on face display.
 """
 
-import cv2, glob, os, time
+import cv2, os, time, shutil
 from picamera import PiCamera
 from picamera.array import PiRGBArray
 import send_to_ec2
@@ -23,13 +23,13 @@ OLD_RESULTS_DIR = '/home/pi/PiB_FaceRecognition/code_on_pi/old_results'  # local
 SEND_FILE_COMMAND = 'python /home/pi/Documents/PIB/code_on_pi/send_to_ec2.py'
 FONT = cv2.FONT_HERSHEY_SIMPLEX
 
-
+"""
 def move_file(in_file_path, out_file_path):
     move_command = ' '.join(['mv', in_file_path, out_file_path])
     print move_command
     os.system(move_command)
     return
-
+"""
 
 def main():
     # 1. start running the camera.
@@ -99,7 +99,7 @@ def main():
                 cv2.waitKey(1)
                 cv2.waitKey(1)
                 # TODO move result file to old dir
-                move_file(NEW_RESULT_PATH, OLD_RESULTS_DIR)
+                shutil.move(NEW_RESULT_PATH, OLD_RESULTS_DIR)
                 break
 
         rawCapture.truncate(0)
