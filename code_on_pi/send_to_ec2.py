@@ -54,9 +54,9 @@ def move_file(in_file_path, out_file_path):
 """
 
 def fetch_file():
-    fetch_command = ' '.join(['scp', '-i', KEY_PAIR_PATH, EC2_IP+':'+RESULT_SRC_DIR+'/*', RESULT_DEST_DIR])
+    fetch_command = ['scp', '-i', KEY_PAIR_PATH, EC2_IP+':'+RESULT_SRC_DIR+'/*', RESULT_DEST_DIR]
     #print fetch_command
-    subprocess.call(fetch_command, shell=True)
+    subprocess.call(fetch_command)
     print '=================================='
     print 'getting results from server'
     print '=================================='
