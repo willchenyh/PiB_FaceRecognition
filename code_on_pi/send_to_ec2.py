@@ -10,15 +10,15 @@ What this script does:
 
 import glob, os, subprocess, time
 
-EC2_IP = 'ec2-user@ec2-52-25-37-56.us-west-2.compute.amazonaws.com'  # ec2 TODO
-KEY_PAIR_PATH = '/home/pi/PiB_FaceRecognition/code_on_pi/aws_personal.pem'  # local TODO
+EC2_IP = "ec2-user@ec2-52-25-37-56.us-west-2.compute.amazonaws.com"  # ec2 TODO
+KEY_PAIR_PATH = "/home/pi/PiB_FaceRecognition/code_on_pi/aws_personal.pem"  # local TODO
 
 IMG_SRC_DIR = '/home/pi/PiB_FaceRecognition/code_on_pi/new_face'  # local
 IMG_DEST_DIR = '/home/ec2-user/PiB_FaceRecognition/code_on_ec2/new_face'  # ec2
 
 #OLD_IMAGES_DIR = '/home/pi/PiB_FaceRecognition/code_on_pi/old_faces'  # local
-RESULT_SRC_DIR = '/home/ec2-user/PiB_FaceRecognition/code_on_ec2/new_result/result.txt'  # ec2
-RESULT_DEST_DIR = '/home/pi/PiB_FaceRecognition/code_on_pi/new_result'  # local
+RESULT_SRC_DIR = "/home/ec2-user/PiB_FaceRecognition/code_on_ec2/new_result/result.txt"  # ec2
+RESULT_DEST_DIR = "/home/pi/PiB_FaceRecognition/code_on_pi/new_result"  # local
 #OLD_RESULTS_DIR = '/home/pi/PiB_FaceRecognition/code_on_pi/old_results'  # local
 
 
@@ -52,11 +52,11 @@ def move_file(in_file_path, out_file_path):
 """
 
 def fetch_file():
-    fetch_command = ['scp', '-i', KEY_PAIR_PATH, EC2_IP+':'+RESULT_SRC_DIR, RESULT_DEST_DIR]
+    fetch_command = ["scp", "-i", KEY_PAIR_PATH, EC2_IP+":"+RESULT_SRC_DIR, RESULT_DEST_DIR]
     #print fetch_command
     while True:
         try:
-            subprocess.check_call(fetch_command, shell=True)
+            subprocess.check_call(fetch_command)
             return
         except subprocess.CalledProcessError:
             continue
