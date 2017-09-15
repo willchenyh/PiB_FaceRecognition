@@ -83,10 +83,8 @@ def main():
                     result_to_display = 'Hey Will!'
                 else:
                     result_to_display = 'Sorry I don\'t know you.'
-                bg = np.zeros((frame.shape[0]+30, frame.shape[1], frame.shape[2]))
-                bg[30:, :, :] = frame
-                #cv2.putText(bg, result_to_display, (10,30), FONT, 1, (0, 255, 0), 2)
-                cv2.imshow('Face Image for Classification', bg)
+                cv2.putText(frame, result_to_display, (10,30), FONT, 1, (0, 255, 0), 2)
+                cv2.imshow('Face Image for Classification', frame)
                 cv2.waitKey(0)
                 cv2.destroyAllWindows()
                 cv2.waitKey(1)
