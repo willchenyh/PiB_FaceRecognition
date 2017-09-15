@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4e73e720-fa65-4425-92aa-82b173ae1f40" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code_on_pi/fr_demo_master.py" afterPath="$PROJECT_DIR$/code_on_pi/fr_demo_master.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code_on_pi/send_to_ec2.py" afterPath="$PROJECT_DIR$/code_on_pi/send_to_ec2.py" />
     </list>
@@ -16,24 +15,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="fr_demo_master.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="fr_demo_master.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/code_on_pi/fr_demo_master.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="84" column="33" lean-forward="true" selection-start-line="84" selection-start-column="33" selection-end-line="84" selection-end-column="33" />
+            <state relative-caret-position="210">
+              <caret line="101" column="62" lean-forward="true" selection-start-line="101" selection-start-column="62" selection-end-line="101" selection-end-column="62" />
               <folding>
                 <element signature="e#266#294#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="send_to_ec2.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/code_on_pi/send_to_ec2.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="55" column="38" lean-forward="false" selection-start-line="55" selection-start-column="38" selection-end-line="55" selection-end-column="38" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -53,6 +42,7 @@
       <find>batch</find>
       <find>move_fi</find>
       <find>move_f</find>
+      <find>shutil</find>
     </findStrings>
     <replaceStrings>
       <replace>MODEL_PATH</replace>
@@ -69,8 +59,8 @@
         <option value="$PROJECT_DIR$/CNN/train_vgg.py" />
         <option value="$PROJECT_DIR$/CNN/test_vgg.py" />
         <option value="$PROJECT_DIR$/code_on_ec2/send_to_pi.py" />
-        <option value="$PROJECT_DIR$/code_on_pi/fr_demo_master.py" />
         <option value="$PROJECT_DIR$/code_on_pi/send_to_ec2.py" />
+        <option value="$PROJECT_DIR$/code_on_pi/fr_demo_master.py" />
       </list>
     </option>
   </component>
@@ -350,21 +340,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code_on_pi/fr_demo_master.py">
+    <entry file="file://$PROJECT_DIR$/code_on_pi/send_to_ec2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="84" column="33" lean-forward="true" selection-start-line="84" selection-start-column="33" selection-end-line="84" selection-end-column="33" />
-          <folding>
-            <element signature="e#266#294#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="166">
+          <caret line="10" column="35" lean-forward="false" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code_on_pi/send_to_ec2.py">
+    <entry file="file://$PROJECT_DIR$/code_on_pi/fr_demo_master.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="55" column="38" lean-forward="false" selection-start-line="55" selection-start-column="38" selection-end-line="55" selection-end-column="38" />
-          <folding />
+        <state relative-caret-position="210">
+          <caret line="101" column="62" lean-forward="true" selection-start-line="101" selection-start-column="62" selection-end-line="101" selection-end-column="62" />
+          <folding>
+            <element signature="e#266#294#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

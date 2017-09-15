@@ -25,8 +25,8 @@ def check_new_file(path, num_files):
     file_path = os.path.join(path,'*')
     file_list = sorted(glob.glob(file_path))
     
-    print file_path
-    print file_list
+    #print file_path
+    #print file_list
     
     num_files = int(num_files)
     if len(file_list) == num_files:
@@ -82,7 +82,8 @@ def main():
         # send it to ec2, and archive it
         new_image_path = new_image_path[0]
         send_file(new_image_path)
-        shutil.move(new_image_path, OLD_IMAGES_DIR)
+        #shutil.move(new_image_path, OLD_IMAGES_DIR)
+        os.remove(new_image_path)
         print 'Let\'s see who you are...'
         # look for new result
         new_result_present = False

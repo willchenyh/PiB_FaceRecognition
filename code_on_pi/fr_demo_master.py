@@ -99,7 +99,8 @@ def main():
                 cv2.waitKey(1)
                 cv2.waitKey(1)
                 # TODO move result file to old dir
-                shutil.move(NEW_RESULT_PATH, OLD_RESULTS_DIR)
+                #shutil.move(NEW_RESULT_PATH, OLD_RESULTS_DIR)
+                os.remove(NEW_RESULT_PATH)
                 break
 
         rawCapture.truncate(0)
