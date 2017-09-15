@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4e73e720-fa65-4425-92aa-82b173ae1f40" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code_on_pi/fr_demo_master.py" afterPath="$PROJECT_DIR$/code_on_pi/fr_demo_master.py" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -19,7 +18,7 @@
         <entry file="file://$PROJECT_DIR$/code_on_pi/fr_demo_master.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="256">
-              <caret line="88" column="62" lean-forward="false" selection-start-line="88" selection-start-column="62" selection-end-line="88" selection-end-column="62" />
+              <caret line="88" column="63" lean-forward="true" selection-start-line="88" selection-start-column="63" selection-end-line="88" selection-end-column="63" />
               <folding>
                 <element signature="e#266#286#0" expanded="true" />
               </folding>
@@ -383,7 +382,7 @@
     <entry file="file://$PROJECT_DIR$/code_on_pi/fr_demo_master.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="256">
-          <caret line="88" column="62" lean-forward="false" selection-start-line="88" selection-start-column="62" selection-end-line="88" selection-end-column="62" />
+          <caret line="88" column="63" lean-forward="true" selection-start-line="88" selection-start-column="63" selection-end-line="88" selection-end-column="63" />
           <folding>
             <element signature="e#266#286#0" expanded="true" />
           </folding>
