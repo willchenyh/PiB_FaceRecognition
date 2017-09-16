@@ -22,17 +22,16 @@ RESULT_DEST_DIR = "/home/pi/PiB_FaceRecognition/code_on_pi/new_result"  # local
 #OLD_RESULTS_DIR = '/home/pi/PiB_FaceRecognition/code_on_pi/old_results'  # local
 
 
-def check_new_file(path, num_files):
+def check_new_file(path):
     new_file_path = None
     file_path = os.path.join(path,'*')
     file_list = sorted(glob.glob(file_path))
     
     #print file_path
     #print file_list
-    
-    num_files = int(num_files)
-    if len(file_list) == num_files:
-        new_file_path = file_list[0:num_files]
+
+    if len(file_list) != 0:
+        new_file_path = file_list[0]
     return new_file_path
 
 
@@ -83,7 +82,7 @@ def present_result(result_path):
 def main():
 
     # check if a new face image is saved on pi
-    new_image_path = check_new_file(IMG_SRC_DIR, 1)
+    new_image_path = check_new_file(IMG_SRC_DIR)
 
     if new_image_path is not None:
         # send it to ec2, and archive it
@@ -99,7 +98,7 @@ def main():
                 time.sleep(1)
                 print 'Still thinking...'
             fetch_file()
-            new_result_list = check_new_file(RESULT_DEST_DIR, 1)
+            new_result_list = check_new_file(RESULT_DEST_DIR)
             #print new_result_list
             if new_result_list is not None:
                 print 'New result found!'

@@ -19,15 +19,15 @@ RESULT_DIR = '/home/ec2-user/PiB_FaceRecognition/code_on_ec2/new_result'  # ec2
 RESULT_FILE_NAME = 'result.txt'
 
 
-def check_new_file(path, num_files):
+def check_new_file(path):
     new_file_path = None
     file_path = os.path.join(path,'*')
     file_list = sorted(glob.glob(file_path))
     #print file_path
     #print file_list
-    num_files = int(num_files)
-    if len(file_list) == num_files:
-        new_file_path = file_list[0:num_files]
+
+    if len(file_list) != 0:
+        new_file_path = file_list[0]
     return new_file_path
 
 """
@@ -89,7 +89,7 @@ def main():
     print 'Starting ...'
     while True:
         # check if a new face image is saved
-        new_image_path = check_new_file(IMG_SRC_DIR, 1)
+        new_image_path = check_new_file(IMG_SRC_DIR)
         if new_image_path is not None:
             print 'New face image found!'
             new_image_path = new_image_path[0]
@@ -106,7 +106,6 @@ def main():
             result_file_path = os.path.join(RESULT_DIR, RESULT_FILE_NAME)
             #move_file(result_file_path, OLD_RESULTS_DIR)
             os.remove(result_file_path)
-            print 'Moved files to old dir'
         else:
             print 'Waiting for image...'
         time.sleep(1)
