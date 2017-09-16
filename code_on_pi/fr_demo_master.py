@@ -125,7 +125,7 @@ def main():
 
         rawCapture.truncate(0)
         print 'Waiting for image...'
-        time.sleep(2)
+        time.sleep(1)
     return
 
 
