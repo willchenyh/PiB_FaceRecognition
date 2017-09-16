@@ -4,12 +4,12 @@ IMG_PATH = "geisel.jpg"
 
 
 def process(img_path):
-    img = cv2.imread(img_path, 0)
+    img = cv2.imread(img_path, 1)
     height, width = img.shape
-    img = cv2.resize(img, (height/2, width/2))
+    img = cv2.resize(img, (width/2, height/2))
     height, width = img.shape
-    cv2.rectangle(img, (height-5, width-5), (height+5, width+5), (255,0,0), 2)
-    cv2.imwrite('geisel_new.jpg', img)
+    cv2.rectangle(img, (width/2-100, height/2-100), (width/2+100, height/2+100), (255,0,0), 20)
+    cv2.imwrite('geisel', img)
     return
 
 
