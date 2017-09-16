@@ -57,6 +57,7 @@ def classify(file_path, model):
     mean_pixel = np.array([104., 117., 123.]).reshape((1, 1, 3))
     # get image
     new_img = cv2.imread(file_path, 1)
+    print new_img.shape
     new_img = cv2.resize(new_img, (img_height, img_width)) - mean_pixel
     x = np.expand_dims(new_img, axis=0)
     # predict
