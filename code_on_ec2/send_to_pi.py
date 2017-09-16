@@ -92,7 +92,6 @@ def main():
         new_image_path = check_new_file(IMG_SRC_DIR)
         if new_image_path is not None:
             print 'New face image found!'
-            print new_image_path
             #new_image_path = new_image_path[0]
             # classify image
             print 'Let\'s see who you are...'

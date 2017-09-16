@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4e73e720-fa65-4425-92aa-82b173ae1f40" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code_on_ec2/send_to_pi.py" afterPath="$PROJECT_DIR$/code_on_ec2/send_to_pi.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code_on_pi/send_to_ec2.py" afterPath="$PROJECT_DIR$/code_on_pi/send_to_ec2.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code_on_pi/fr_demo_master.py" afterPath="$PROJECT_DIR$/code_on_pi/fr_demo_master.py" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,22 +15,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="send_to_ec2.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/code_on_pi/send_to_ec2.py">
+      <file leaf-file-name="fr_demo_master.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/code_on_pi/fr_demo_master.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="105" column="17" lean-forward="false" selection-start-line="105" selection-start-column="17" selection-end-line="105" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="send_to_pi.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code_on_ec2/send_to_pi.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="94" column="32" lean-forward="false" selection-start-line="94" selection-start-column="32" selection-end-line="94" selection-end-column="32" />
-              <folding />
+            <state relative-caret-position="382">
+              <caret line="103" column="20" lean-forward="false" selection-start-line="103" selection-start-column="20" selection-end-line="103" selection-end-column="20" />
+              <folding>
+                <element signature="e#266#286#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -66,9 +58,9 @@
         <option value="$PROJECT_DIR$/CNN/train_vgg.py" />
         <option value="$PROJECT_DIR$/CNN/test_vgg.py" />
         <option value="$PROJECT_DIR$/code_on_ec2/classify.py" />
-        <option value="$PROJECT_DIR$/code_on_pi/fr_demo_master.py" />
-        <option value="$PROJECT_DIR$/code_on_ec2/send_to_pi.py" />
         <option value="$PROJECT_DIR$/code_on_pi/send_to_ec2.py" />
+        <option value="$PROJECT_DIR$/code_on_ec2/send_to_pi.py" />
+        <option value="$PROJECT_DIR$/code_on_pi/fr_demo_master.py" />
       </list>
     </option>
   </component>
@@ -399,29 +391,29 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code_on_pi/scp-err.py" />
-    <entry file="file://$PROJECT_DIR$/code_on_pi/fr_demo_master.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="98" column="42" lean-forward="true" selection-start-line="98" selection-start-column="42" selection-end-line="98" selection-end-column="42" />
-          <folding>
-            <element signature="e#266#286#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/code_on_ec2/send_to_pi.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="94" column="32" lean-forward="false" selection-start-line="94" selection-start-column="32" selection-end-line="94" selection-end-column="32" />
+        <state relative-caret-position="263">
+          <caret line="93" column="41" lean-forward="false" selection-start-line="93" selection-start-column="41" selection-end-line="93" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code_on_pi/send_to_ec2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
+        <state relative-caret-position="456">
           <caret line="105" column="17" lean-forward="false" selection-start-line="105" selection-start-column="17" selection-end-line="105" selection-end-column="17" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code_on_pi/fr_demo_master.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="103" column="20" lean-forward="false" selection-start-line="103" selection-start-column="20" selection-end-line="103" selection-end-column="20" />
+          <folding>
+            <element signature="e#266#286#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
