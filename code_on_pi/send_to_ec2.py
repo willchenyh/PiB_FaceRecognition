@@ -30,7 +30,7 @@ def check_new_file(path):
     #print file_path
     #print file_list
 
-    if len(file_list) != 0:
+    if len(file_list) ==1:
         new_file_path = file_list[0]
     return new_file_path
 
@@ -60,13 +60,13 @@ def fetch_file():
         except subprocess.CalledProcessError:
             continue
 
-
+"""
 def extract_result_file(result_list):
     result_path = result_list[0]
     #if result_path[-1] == 'r':
     #    result_path = result_list[1]
     return result_path
-
+"""
 
 def present_result(result_path):
     # present result
@@ -86,7 +86,7 @@ def main():
 
     if new_image_path is not None:
         # send it to ec2, and archive it
-        new_image_path = new_image_path[0]
+        #new_image_path = new_image_path[0]
         send_file(new_image_path)
         #shutil.move(new_image_path, OLD_IMAGES_DIR)
         os.remove(new_image_path)
@@ -98,12 +98,12 @@ def main():
                 time.sleep(1)
                 print 'Still thinking...'
             fetch_file()
-            new_result_list = check_new_file(RESULT_DEST_DIR)
+            new_result_path = check_new_file(RESULT_DEST_DIR)
             #print new_result_list
-            if new_result_list is not None:
+            if new_result_path is not None:
                 print 'New result found!'
                 #new_result_present = True
-                new_result_path = extract_result_file(new_result_list)
+                #new_result_path = extract_result_file(new_result_list)
                 """
                 move_file(new_result_path, OLD_RESULTS_DIR)
                 """

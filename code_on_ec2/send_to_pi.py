@@ -26,7 +26,7 @@ def check_new_file(path):
     #print file_path
     #print file_list
 
-    if len(file_list) != 0:
+    if len(file_list) == 1:
         new_file_path = file_list[0]
     return new_file_path
 
@@ -92,7 +92,8 @@ def main():
         new_image_path = check_new_file(IMG_SRC_DIR)
         if new_image_path is not None:
             print 'New face image found!'
-            new_image_path = new_image_path[0]
+            print new_image_path
+            #new_image_path = new_image_path[0]
             # classify image
             print 'Let\'s see who you are...'
             # call the classify script and save name and confidence level in a txt file
