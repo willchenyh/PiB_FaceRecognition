@@ -7,7 +7,7 @@ What this script does:
 4. show result on face display.
 """
 
-import cv2, os, time, subprocess
+import cv2, os, time, subprocess, pygame
 from picamera import PiCamera
 from picamera.array import PiRGBArray
 
@@ -50,6 +50,19 @@ def read_result(result_path):
     conf = details[1]
     print name, conf
     return name, conf
+
+
+def play_sound(name):
+    pygame.mixer.init()
+    if name == 'Will':
+        pygame.mixer.music.load('hello_will.mp3')
+        pygame.mixer.music.play()
+    else:
+        pygame.mixer.music.load('unknown_face.mp3')
+        pygame.mixer.music.play()
+    while pygame.mixer.music.get_busy() is True:
+        continue
+    return
 
 
 def main():
@@ -113,6 +126,7 @@ def main():
                     result_to_display = 'Sorry I don\'t know you.'
                 cv2.putText(frame, result_to_display, (10,30), FONT, 1, (0, 255, 0), 2)
                 cv2.imshow('Face Image for Classification', frame)
+                play_sound(name)
                 cv2.waitKey(0)
                 cv2.destroyAllWindows()
                 cv2.waitKey(1)
@@ -121,7 +135,7 @@ def main():
                 cv2.waitKey(1)
                 # remove result
                 os.remove(NEW_RESULT_PATH)
-                break
+            break
 
         rawCapture.truncate(0)
         print 'Waiting for image...'
