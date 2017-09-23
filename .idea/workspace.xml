@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4e73e720-fa65-4425-92aa-82b173ae1f40" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code_on_pi/fr_demo_master.py" afterPath="$PROJECT_DIR$/code_on_pi/fr_demo_master.py" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -17,21 +18,11 @@
       <file leaf-file-name="fr_demo_master.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/code_on_pi/fr_demo_master.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="56" column="34" lean-forward="false" selection-start-line="56" selection-start-column="34" selection-end-line="56" selection-end-column="34" />
+            <state relative-caret-position="187">
+              <caret line="62" column="37" lean-forward="false" selection-start-line="62" selection-start-column="37" selection-end-line="62" selection-end-column="37" />
               <folding>
                 <element signature="e#266#306#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="play_sound.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code_on_pi/play_sound.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="12" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="5" selection-end-column="12" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -436,8 +427,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/code_on_pi/fr_demo_master.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="56" column="34" lean-forward="false" selection-start-line="56" selection-start-column="34" selection-end-line="56" selection-end-column="34" />
+        <state relative-caret-position="187">
+          <caret line="62" column="37" lean-forward="false" selection-start-line="62" selection-start-column="37" selection-end-line="62" selection-end-column="37" />
           <folding>
             <element signature="e#266#306#0" expanded="true" />
           </folding>

@@ -57,8 +57,11 @@ def play_sound(name, conf):
     if name == 'Will' and conf>0.9:
         pygame.mixer.music.load('hello_will.mp3')
         pygame.mixer.music.play()
-    else:
+    elif conf>0:
         pygame.mixer.music.load('unknown_face.mp3')
+        pygame.mixer.music.play()
+    elif name == 'think' and conf == 0:
+        pygame.mixer.music.load('think.mp3')
         pygame.mixer.music.play()
     while pygame.mixer.music.get_busy() is True:
         continue
@@ -112,9 +115,9 @@ def main():
                 os.remove(face_path)
                 print 'Let\'s see who you are...'
                 # look for new result
-                for i in range(3):
-                    time.sleep(1)
-                    print 'Still thinking...'
+                play_sound('think', 0)
+                time.sleep(1)
+                print 'Still thinking...'
                 new_result_path = fetch_file()
                 print 'New result found!'
                 name, conf = read_result(new_result_path)
