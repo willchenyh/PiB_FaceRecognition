@@ -52,9 +52,9 @@ def read_result(result_path):
     return name, conf
 
 
-def play_sound(name):
+def play_sound(name, conf):
     pygame.mixer.init()
-    if name == 'Will':
+    if name == 'Will' and conf>0.9:
         pygame.mixer.music.load('hello_will.mp3')
         pygame.mixer.music.play()
     else:
@@ -126,7 +126,7 @@ def main():
                     result_to_display = 'Sorry I don\'t know you.'
                 cv2.putText(frame, result_to_display, (10,30), FONT, 1, (0, 255, 0), 2)
                 cv2.imshow('Face Image for Classification', frame)
-                play_sound(name)
+                play_sound(name, float(conf))
                 cv2.waitKey(0)
                 cv2.destroyAllWindows()
                 cv2.waitKey(1)
